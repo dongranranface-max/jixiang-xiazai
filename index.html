@@ -1,0 +1,138 @@
+<!--
+  本文件变更说明：
+  - 2026-07-21 ｜ 新增 app.jixianggongshe.com 独立 H5 下载页，承接 APP 下载转化
+  - 后续改动请按"YYYY-MM-DD ｜ 改动内容（PIT-YYYY-NNN 或原因）"追加
+-->
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no,email=no,address=no" />
+    <meta name="theme-color" content="#111927" />
+    <title>下载集享公社APP - 轻奢消费 · 生态增值</title>
+    <meta
+      name="description"
+      content="集享公社APP官方下载，消费商城、生态积分、权益活动、订单实时同步，一站式掌握。"
+    />
+    <link rel="icon" href="./assets/logo.png" />
+    <link rel="apple-touch-icon" href="./assets/logo.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      window.JXGS_DOWNLOAD_CONFIG = {
+        domain: 'app.jixianggongshe.com',
+        androidUrl: 'https://app.jixianggongshe.com/downloads/jixianggongshe.apk',
+        iosUrl: '',
+        fallbackUrl: 'https://app.jixianggongshe.com/',
+        appStoreText: 'iOS 版本即将开放，请先复制链接或联系官方客服',
+        androidText: '安卓安装包地址待配置，请上线前替换 androidUrl',
+      }
+    </script>
+  </head>
+  <body>
+    <main class="download-page" aria-labelledby="pageTitle">
+      <section class="hero" aria-label="集享公社APP下载">
+        <div class="ambient ambient-a"></div>
+        <div class="ambient ambient-b"></div>
+
+        <header class="brand-bar">
+          <a class="brand" href="./" aria-label="集享公社app下载首页">
+            <img class="brand__logo" src="./assets/logo.png" alt="集享公社" />
+            <span class="brand__copy">
+              <strong>集享公社</strong>
+              <span>轻奢消费 · 生态增值</span>
+            </span>
+          </a>
+          <span class="domain">app.jixianggongshe.com</span>
+        </header>
+
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">官方安全下载</p>
+            <h1 id="pageTitle">下载集享公社APP</h1>
+            <p class="lead">消费商城、生态积分、权益活动，一站式掌握。</p>
+            <p class="sublead">把消费、订单、生态积分装进口袋，多端同步，随时查看。</p>
+
+            <div class="platform-pill" id="platformPill" aria-live="polite">
+              iOS / Android 自动识别，安全下载安装
+            </div>
+          </div>
+
+          <div class="phone-stage" aria-hidden="true">
+            <div class="phone">
+              <div class="phone__status">
+                <span>9:41</span>
+                <span>5G 100%</span>
+              </div>
+              <div class="app-head">
+                <img src="./assets/logo.png" alt="" />
+                <div>
+                  <strong>集享公社</strong>
+                  <span>生态增值 · 共享美好生活</span>
+                </div>
+              </div>
+              <div class="asset-card">
+                <span>生态积分（可用）</span>
+                <strong>28,888.00</strong>
+                <em>积分明细</em>
+              </div>
+              <div class="app-nav">
+                <span>消费商城</span>
+                <span>生态积分</span>
+                <span>权益中心</span>
+                <span>订单中心</span>
+              </div>
+              <div class="promo-card">
+                <strong>轻奢消费 · 生态增值</strong>
+                <span>品质好物、权益活动与订单进度实时同步。</span>
+              </div>
+              <div class="order-card">
+                <div>
+                  <strong>我的订单</strong>
+                  <span>待付款 / 待发货 / 售后</span>
+                </div>
+                <b>实时同步</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="action-panel" aria-label="下载操作">
+        <button class="primary-btn" id="downloadBtn" type="button">
+          <span class="primary-btn__mark">APP</span>
+          <span>立即下载APP</span>
+        </button>
+        <button class="secondary-btn" id="copyBtn" type="button">复制下载链接</button>
+        <p class="safe-line" id="safeLine">iOS / Android 自动识别，官方渠道安全下载安装</p>
+
+        <div class="wechat-tip" id="wechatTip" hidden>
+          <span>微信内打开请点击右上角，在浏览器中打开</span>
+        </div>
+      </section>
+
+      <section class="trust-list" aria-label="下载保障">
+        <article>
+          <strong>官方安全包</strong>
+          <span>官方发布，渠道可控</span>
+        </article>
+        <article>
+          <strong>生态积分资产</strong>
+          <span>积分可查，价值透明</span>
+        </article>
+        <article>
+          <strong>订单实时同步</strong>
+          <span>多端同步，进度可查</span>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <p>© 集享公社 · app.jixianggongshe.com</p>
+        <p>如下载失败，请复制链接后在手机浏览器打开。</p>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
