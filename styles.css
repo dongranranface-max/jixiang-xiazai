@@ -1,5 +1,6 @@
 /*
   本文件变更说明：
+  - 2026-07-21 ｜ 移动端手机预览改为文档流居中，避免绝对定位向上覆盖下载文案和按钮
   - 2026-07-21 ｜ 下载页改为手机优先 H5 自适应布局，平板/桌面展开为双栏落地页
   - 2026-07-21 ｜ 新增 APP 下载页移动端视觉样式，采用深色安全信任方向并融合生态增长元素
   - 后续改动请按"YYYY-MM-DD ｜ 改动内容（PIT-YYYY-NNN 或原因）"追加
@@ -329,26 +330,31 @@ h1 {
 
 .phone-stage {
   position: relative;
-  min-height: 250px;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  margin-top: 2px;
+  padding: 16px 0 2px;
+  overflow: hidden;
 }
 
 .phone-stage::before {
   content: "";
   position: absolute;
-  right: -38px;
-  bottom: 10px;
+  left: 50%;
+  bottom: 18px;
   width: 260px;
   height: 130px;
   border-radius: 999px;
   background: linear-gradient(135deg, rgba(207, 173, 120, 0.26), rgba(126, 165, 139, 0.18));
-  transform: rotate(-12deg);
+  transform: translateX(-50%) rotate(-12deg);
 }
 
 .phone {
-  position: absolute;
-  right: 8px;
-  bottom: 0;
-  width: 232px;
+  position: relative;
+  right: auto;
+  bottom: auto;
+  width: min(232px, calc(100vw - 88px));
   min-height: 322px;
   padding: 14px 12px 16px;
   border: 7px solid #0b0d12;
@@ -615,8 +621,7 @@ h1 {
   }
 
   .phone {
-    right: -10px;
-    width: 218px;
+    width: min(218px, calc(100vw - 76px));
   }
 
   .trust-list {
@@ -630,12 +635,14 @@ h1 {
 
 @media (max-height: 700px) and (max-width: 767px) {
   .phone-stage {
-    min-height: 206px;
+    padding-top: 10px;
+    padding-bottom: 0;
     overflow: hidden;
   }
 
   .phone {
-    bottom: -94px;
+    width: min(208px, calc(100vw - 82px));
+    min-height: 292px;
   }
 }
 
@@ -690,17 +697,23 @@ h1 {
   }
 
   .phone-stage {
+    display: block;
     min-height: 520px;
+    margin-top: 0;
+    padding: 0;
   }
 
   .phone-stage::before {
+    left: auto;
     right: 16px;
     bottom: 48px;
     width: 360px;
     height: 190px;
+    transform: rotate(-12deg);
   }
 
   .phone {
+    position: absolute;
     right: 42px;
     bottom: 28px;
     width: 292px;
@@ -758,12 +771,18 @@ h1 {
   }
 
   .phone-stage {
+    display: grid;
+    place-items: center;
     min-height: 240px;
+    padding: 0;
   }
 
   .phone {
-    right: 8px;
-    bottom: -114px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(210px, calc(100vw - 96px));
+    min-height: 292px;
   }
 }
 
