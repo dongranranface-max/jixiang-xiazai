@@ -1,5 +1,8 @@
 /*
   本文件变更说明：
+  - 2026-07-21 ｜ 下载页桌面/未知设备未配置安装包时改用通用待配置提示
+  - 2026-07-21 ｜ 下载按钮文案随平台和安装地址配置自适应，未知设备不再回跳当前页
+  - 2026-07-21 ｜ 下载目标按平台严格区分，未配置安装包时提示而不是回跳当前页
   - 2026-07-21 ｜ 新增 APP 下载页设备识别、微信提示、下载跳转和复制链接交互
   - 后续改动请按"YYYY-MM-DD ｜ 改动内容（PIT-YYYY-NNN 或原因）"追加
 */
@@ -12,6 +15,7 @@
   const isWeChat = /MicroMessenger/i.test(userAgent)
 
   const downloadBtn = document.getElementById('downloadBtn')
+  const downloadLabel = document.getElementById('downloadLabel')
   const copyBtn = document.getElementById('copyBtn')
   const platformPill = document.getElementById('platformPill')
   const safeLine = document.getElementById('safeLine')
@@ -35,9 +39,9 @@
   }
 
   function getDownloadTarget() {
-    if (isIOS) return config.iosUrl || config.fallbackUrl || ''
-    if (isAndroid) return config.androidUrl || config.fallbackUrl || ''
-    return config.fallbackUrl || config.androidUrl || config.iosUrl || ''
+    if (isIOS) return config.iosUrl || ''
+    if (isAndroid) return config.androidUrl || ''
+    return config.androidUrl || config.iosUrl || ''
   }
 
   function getPlatformText() {
@@ -46,8 +50,21 @@
     return '未识别具体设备，可复制链接到手机浏览器打开'
   }
 
+  function getDownloadLabel() {
+    if (isIOS) return config.iosUrl ? '前往 iOS 安装' : 'iOS 版本待开放'
+    if (isAndroid) return config.androidUrl ? '下载 Android 安装包' : '安卓安装包待配置'
+    return config.androidUrl || config.iosUrl ? '选择可用安装入口' : '安装包待配置'
+  }
+
+  function getUnavailableText() {
+    if (isIOS) return config.appStoreText
+    if (isAndroid) return config.androidText
+    return '安装包地址待配置，请使用手机浏览器访问或联系官方客服'
+  }
+
   function initPlatformCopy() {
     if (platformPill) platformPill.textContent = getPlatformText()
+    if (downloadLabel) downloadLabel.textContent = getDownloadLabel()
     if (safeLine) {
       safeLine.textContent = isIOS
         ? 'iOS / iPhone 用户请使用 Safari 或系统浏览器打开'
@@ -69,7 +86,7 @@
 
     const target = getDownloadTarget()
     if (!target) {
-      showToast(isIOS ? config.appStoreText : config.androidText)
+      showToast(getUnavailableText())
       return
     }
 
